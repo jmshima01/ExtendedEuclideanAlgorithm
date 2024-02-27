@@ -1,6 +1,6 @@
 from sys import argv
 
-def eea(a,b):
+def mul_inverse(a,b):
     x = [1,0]
     y = [0,1]
     r = [a,b]
@@ -17,12 +17,12 @@ def eea(a,b):
         a,b = b,r[-1]
         
     print(f"a: {a_l}")
-    print(f"b: {b_l}\n")
+    print(f"b: {b_l}")
     print(f"q: {q}")
     print(f"r: {r}")
     print(f"x: {x}")
     print(f"y: {y}")
-    return x[-1]
+    return x[-1]%b_l[0]
 
 def gcd_(a,b):
     if(b==0):
@@ -32,7 +32,7 @@ def gcd_(a,b):
 
 if __name__ == "__main__":
     if len(argv) < 3:
-        print("Usage: python3 eea.py a b")
+        print("Usage: python3 inverse.py a b")
         exit(1)
     
     a = int(argv[1])
@@ -42,9 +42,7 @@ if __name__ == "__main__":
         print("NO INVERSE\n")
         exit(0)
     print("============")
-    result = eea(a,b)
-    while result < 0:
-        result+=b
+    result = mul_inverse(a,b)
     print("============")
     print("result: ",result)
     print()
